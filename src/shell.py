@@ -69,3 +69,16 @@ class Shell:
                 self.show(self.execute(line))
             except CommandError as err:
                 print(err)
+
+    def run_script(self, lines):
+        for line in lines:
+            if not self.running:
+                break
+            print(self.prompt() + line)
+            try:
+                self.show(self.execute(line))
+            except CommandError as err:
+                print(err)
+                print("Скрипт остановлен из-за ошибки")
+                return False
+        return True
