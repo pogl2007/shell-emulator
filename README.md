@@ -1,6 +1,6 @@
 # Эмулятор оболочки
 
-Практическая работа №1, вариант 12. Этапы 1-2.
+Практическая работа №1, вариант 12. Этапы 1-3.
 
 Консольный эмулятор UNIX-оболочки. В приглашении показывается имя
 VFS: `vfs:~$`.
@@ -25,6 +25,31 @@ VFS: `vfs:~$`.
 ошибке выполнение прекращается.
 
 Скрипт для проверки параметров: `os_scripts\test_params.bat`.
+
+## VFS
+
+VFS грузится из JSON-файла в память, сам файл не меняется. Двоичные
+файлы лежат в base64.
+
+```json
+{
+  "name": "mydisk",
+  "root": {
+    "type": "dir",
+    "children": {
+      "readme.txt": {"type": "file", "content": "Hello\n"},
+      "logo.png": {"type": "file", "base64": "iVBORw0KGgo="},
+      "home": {"type": "dir", "owner": "user", "children": {}}
+    }
+  }
+}
+```
+
+Готовые VFS в папке `vfs/`: `minimal.json` (пустая), `several.json`
+(несколько файлов), `deep.json` (больше 3 уровней). Файлы `bad_*.json`
+для проверки ошибок: не JSON, нет root, неизвестный тип, плохой base64.
+
+Проверка всех VFS: `os_scripts\test_vfs.bat`.
 
 ## Запуск
 
@@ -60,10 +85,22 @@ VFS: `vfs:~$`.
 .\run.bat --vfs vfs\mydisk.json --script scripts\stage2.txt
 ```
 
+Загрузка VFS:
+
+```
+.\run.bat --vfs vfs\deep.json
+```
+
 Все варианты параметров одной командой:
 
 ```
 .\os_scripts\test_params.bat
+```
+
+Все варианты VFS и ошибки загрузки:
+
+```
+.\os_scripts\test_vfs.bat
 ```
 
 Можно запускать и напрямую: `python src\main.py [параметры]`.

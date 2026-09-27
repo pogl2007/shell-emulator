@@ -1,0 +1,59 @@
+{
+  "name": "deep",
+  "root": {
+    "type": "dir",
+    "children": {
+      "readme.txt": {
+        "type": "file",
+        "content": "This is a deep VFS.\n"
+      },
+      "etc": {
+        "type": "dir",
+        "children": {
+          "hostname": {
+            "type": "file",
+            "content": "emulator\n"
+          }
+        }
+      },
+      "home": {
+        "type": "dir",
+        "children": {
+          "user": {
+            "type": "dir",
+            "owner": "user",
+            "children": {
+              "docs": {
+                "type": "dir",
+                "owner": "user",
+                "children": {
+                  "notes.txt": {
+                    "type": "file",
+                    "owner": "user",
+                    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n"
+                  },
+                  "todo.txt": {
+                    "type": "file",
+                    "owner": "user",
+                    "content": "buy milk\nlearn git\n"
+                  }
+                }
+              },
+              "my photos": {
+                "type": "dir",
+                "owner": "user",
+                "children": {
+                  "cat.png": {
+                    "type": "file",
+                    "owner": "user",
+                    "base64": "iVBORw0KGgoAAAANSUhEUgAAAAE="
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

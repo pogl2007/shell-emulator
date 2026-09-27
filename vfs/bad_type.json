@@ -1,0 +1,11 @@
+{
+  "name": "bad_type",
+  "root": {
+    "type": "dir",
+    "children": {
+      "link": {
+        "type": "symlink"
+      }
+    }
+  }
+}

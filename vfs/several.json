@@ -1,0 +1,20 @@
+{
+  "name": "several",
+  "root": {
+    "type": "dir",
+    "children": {
+      "readme.txt": {
+        "type": "file",
+        "content": "Hello from VFS!\n"
+      },
+      "hello.sh": {
+        "type": "file",
+        "content": "echo Hello\n"
+      },
+      "logo.png": {
+        "type": "file",
+        "base64": "iVBORw0KGgoAAAANSUhEUgAAAAE="
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "bad_base64",
+  "root": {
+    "type": "dir",
+    "children": {
+      "image.png": {
+        "type": "file",
+        "base64": "это не base64!"
+      }
+    }
+  }
+}

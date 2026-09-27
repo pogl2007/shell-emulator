@@ -1,15 +1,16 @@
 import shlex
 
 from errors import CommandError
+from vfs import Vfs
 
-VFS_NAME = "vfs"
 MAX_ARGS = 1
 
 
 class Shell:
 
-    def __init__(self, name=VFS_NAME):
-        self.name = name
+    def __init__(self, vfs=None):
+        self.vfs = vfs if vfs is not None else Vfs()
+        self.cwd = "/"
         self.running = True
         self.commands = {
             "ls": self.do_ls,
@@ -18,7 +19,7 @@ class Shell:
         }
 
     def prompt(self):
-        return f"{self.name}:~$ "
+        return f"{self.vfs.name}:~$ "
 
     @staticmethod
     def parse(line):
