@@ -5,11 +5,11 @@
     "children": {
       "readme.txt": {
         "type": "file",
-        "content": "Hello from VFS!\n"
+        "base64": "SGVsbG8gZnJvbSBWRlMhCg=="
       },
       "hello.sh": {
         "type": "file",
-        "content": "echo Hello\n"
+        "base64": "ZWNobyBIZWxsbwo="
       },
       "logo.png": {
         "type": "file",

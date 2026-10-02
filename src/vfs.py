@@ -121,18 +121,18 @@ class Vfs:
 
     @staticmethod
     def fill_file(node, spec, where):
-        if "base64" in spec:
+        data = spec.get("base64", "")
+        if not isinstance(data, str):
+            raise VfsError(f"Ошибка: base64 должен быть строкой: {where}")
+        try:
+            raw = base64.b64decode(data, validate=True)
+        except (binascii.Error, ValueError) as err:
+            raise VfsError(
+                f"Ошибка: неверные данные base64: {where}") from err
+        try:
+            node.content = raw.decode("utf-8")
+        except UnicodeDecodeError:
             node.binary = True
-            try:
-                base64.b64decode(spec["base64"], validate=True)
-            except (binascii.Error, ValueError) as err:
-                raise VfsError(
-                    f"Ошибка: неверные данные base64: {where}") from err
-            return
-        content = spec.get("content", "")
-        if not isinstance(content, str):
-            raise VfsError(f"Ошибка: content должен быть строкой: {where}")
-        node.content = content
 
     def resolve(self, cwd, path):
         node = self.root

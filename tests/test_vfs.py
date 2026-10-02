@@ -22,6 +22,14 @@ def test_load_several():
     assert vfs.resolve("/", "logo.png").binary is True
 
 
+def test_text_decoded_from_base64():
+    vfs = Vfs.from_file("vfs/several.json")
+    node = vfs.resolve("/", "readme.txt")
+    assert node.binary is False
+    assert node.content == "Hello from VFS!\n"
+    assert node.lines() == ["Hello from VFS!"]
+
+
 def test_load_deep():
     vfs = Vfs.from_file("vfs/deep.json")
     node = vfs.resolve("/", "/home/user/docs/notes.txt")

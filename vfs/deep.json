@@ -5,14 +5,14 @@
     "children": {
       "readme.txt": {
         "type": "file",
-        "content": "This is a deep VFS.\n"
+        "base64": "VGhpcyBpcyBhIGRlZXAgVkZTLgo="
       },
       "etc": {
         "type": "dir",
         "children": {
           "hostname": {
             "type": "file",
-            "content": "emulator\n"
+            "base64": "ZW11bGF0b3IK"
           }
         }
       },
@@ -30,12 +30,12 @@
                   "notes.txt": {
                     "type": "file",
                     "owner": "user",
-                    "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n"
+                    "base64": "MQoyCjMKNAo1CjYKNwo4CjkKMTAKMTEKMTIK"
                   },
                   "todo.txt": {
                     "type": "file",
                     "owner": "user",
-                    "content": "buy milk\nlearn git\n"
+                    "base64": "YnV5IG1pbGsKbGVhcm4gZ2l0Cg=="
                   }
                 }
               },
