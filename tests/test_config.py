@@ -33,16 +33,15 @@ def test_script_not_found():
 
 
 def test_run_script(tmp_path, capsys):
-    config = make_script(tmp_path, "ls -l\nexit\n")
+    config = make_script(tmp_path, "cd /\nexit\n")
     assert Shell().run_script(config.script_lines()) is True
-    out = capsys.readouterr().out
-    assert "vfs:~$ ls -l\nls ['-l']\n" in out
+    assert "vfs:/$ cd /" in capsys.readouterr().out
 
 
 def test_run_script_stops_on_error(tmp_path, capsys):
-    config = make_script(tmp_path, "ls 1\nfoo\nls 2\n")
+    config = make_script(tmp_path, "cd /\nfoo\ncd /nope\n")
     assert Shell().run_script(config.script_lines()) is False
     out = capsys.readouterr().out
     assert "foo: command not found" in out
     assert "Скрипт остановлен из-за ошибки" in out
-    assert "ls ['2']" not in out
+    assert "/nope" not in out

@@ -1,12 +1,13 @@
 import shlex
 
+from commands import BasicCommands
 from errors import CommandError
 from vfs import Vfs
 
 MAX_ARGS = 1
 
 
-class Shell:
+class Shell(BasicCommands):
 
     def __init__(self, vfs=None):
         self.vfs = vfs if vfs is not None else Vfs()
@@ -15,11 +16,14 @@ class Shell:
         self.commands = {
             "ls": self.do_ls,
             "cd": self.do_cd,
+            "head": self.do_head,
+            "tail": self.do_tail,
+            "clear": self.do_clear,
             "exit": self.do_exit,
         }
 
     def prompt(self):
-        return f"{self.vfs.name}:~$ "
+        return f"{self.vfs.name}:{self.cwd}$ "
 
     @staticmethod
     def parse(line):
@@ -38,14 +42,6 @@ class Shell:
         if name not in self.commands:
             raise CommandError(f"{name}: command not found")
         return self.commands[name](args)
-
-    def do_ls(self, args):
-        return f"ls {args}"
-
-    def do_cd(self, args):
-        if len(args) > MAX_ARGS:
-            raise CommandError("cd: too many arguments")
-        return f"cd {args}"
 
     def do_exit(self, args):
         if len(args) > MAX_ARGS:

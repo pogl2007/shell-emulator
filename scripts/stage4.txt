@@ -1,0 +1,24 @@
+# Этап 4: ls, cd, head, tail, clear
+clear
+# ls
+ls
+ls -l
+ls /home/user
+ls -l "/home/user/my photos"
+ls /readme.txt
+# cd
+cd home
+cd user/docs
+ls
+cd ..
+cd ../..
+cd "/home/user/my photos"
+cd
+# head и tail
+head /home/user/docs/notes.txt
+head -n 3 /home/user/docs/notes.txt
+tail /home/user/docs/notes.txt
+tail -n 2 /home/user/docs/todo.txt
+# ошибка: cd в файл, скрипт останавливается
+cd /readme.txt
+ls

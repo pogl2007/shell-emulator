@@ -22,15 +22,7 @@ def test_parse_empty():
 
 
 def test_prompt(shell):
-    assert shell.prompt() == "vfs:~$ "
-
-
-def test_ls_stub(shell):
-    assert shell.execute("ls -l \"my dir\"") == "ls ['-l', 'my dir']"
-
-
-def test_cd_stub(shell):
-    assert shell.execute("cd /home") == "cd ['/home']"
+    assert shell.prompt() == "vfs:/$ "
 
 
 def test_empty_line(shell):
@@ -50,6 +42,11 @@ def test_unknown_command(shell):
 def test_cd_too_many_args(shell):
     with pytest.raises(CommandError, match="too many arguments"):
         shell.execute("cd a b")
+
+
+def test_commands_registered(shell):
+    assert set(shell.commands) == {
+        "ls", "cd", "head", "tail", "clear", "exit"}
 
 
 def test_exit(shell):
