@@ -1,0 +1,20 @@
+# Этап 5: chown и rm, изменения только в памяти
+# chown
+ls -l
+chown user /readme.txt
+chown guest "/home/user/my photos"
+ls -l
+ls -l /home/user
+# rm файла
+rm /readme.txt
+ls
+# rm папки
+rm -r "/home/user/my photos"
+ls /home/user
+# удаление текущей папки: переходим в родителя
+cd /home/user/docs
+rm -r /home/user/docs
+ls
+# ошибка: папка без -r, скрипт останавливается
+rm /etc
+ls

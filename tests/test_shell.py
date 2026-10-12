@@ -46,7 +46,7 @@ def test_cd_too_many_args(shell):
 
 def test_commands_registered(shell):
     assert set(shell.commands) == {
-        "ls", "cd", "head", "tail", "clear", "exit"}
+        "ls", "cd", "head", "tail", "clear", "chown", "rm", "exit"}
 
 
 def test_exit(shell):

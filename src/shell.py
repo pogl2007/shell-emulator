@@ -2,12 +2,13 @@ import shlex
 
 from commands import BasicCommands
 from errors import CommandError
+from modify import ModifyCommands
 from vfs import Vfs
 
 MAX_ARGS = 1
 
 
-class Shell(BasicCommands):
+class Shell(BasicCommands, ModifyCommands):
 
     def __init__(self, vfs=None):
         self.vfs = vfs if vfs is not None else Vfs()
@@ -19,6 +20,8 @@ class Shell(BasicCommands):
             "head": self.do_head,
             "tail": self.do_tail,
             "clear": self.do_clear,
+            "chown": self.do_chown,
+            "rm": self.do_rm,
             "exit": self.do_exit,
         }
 
