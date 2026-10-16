@@ -9,6 +9,5 @@ cd ../..
 head /home/user/docs/notes.txt
 head -n 3 /home/user/docs/notes.txt
 tail -n 2 /home/user/docs/notes.txt
-# ошибка: cd в файл, скрипт останавливается
 cd /readme.txt
 ls
